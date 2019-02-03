@@ -11,6 +11,18 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery.min
+//= require jquery.magnific-popup.min
+//= require bootstrap.min
+//= require jquery.flexslider
+//= require bootstrap-datepicker
+//= require owl.carousel
+//= require custom-navigation
+//= require custom-flex
+//= require custom-owl
+//= require custom-date-picker
+//= require custom-video
+//= require popup-ad
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+
