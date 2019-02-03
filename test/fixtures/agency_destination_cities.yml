@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  agency_branch: one
+  destination_city: one
+
+two:
+  agency_branch: two
+  destination_city: two

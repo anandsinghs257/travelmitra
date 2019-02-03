@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_01_120728) do
+ActiveRecord::Schema.define(version: 2019_02_03_113833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,4 +27,54 @@ ActiveRecord::Schema.define(version: 2019_02_01_120728) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "agencies", force: :cascade do |t|
+    t.string "name"
+    t.string "website"
+    t.string "cover_image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "agency_branches", force: :cascade do |t|
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.float "latitude"
+    t.string "longitude"
+    t.boolean "is_head_office"
+    t.integer "agency_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "agency_contacts", force: :cascade do |t|
+    t.string "contact_number"
+    t.string "contact_person"
+    t.bigint "agency_branch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agency_branch_id"], name: "index_agency_contacts_on_agency_branch_id"
+  end
+
+  create_table "agency_destination_cities", force: :cascade do |t|
+    t.bigint "agency_branch_id"
+    t.bigint "destination_city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agency_branch_id"], name: "index_agency_destination_cities_on_agency_branch_id"
+    t.index ["destination_city_id"], name: "index_agency_destination_cities_on_destination_city_id"
+  end
+
+  create_table "destination_cities", force: :cascade do |t|
+    t.string "name"
+    t.string "state"
+    t.string "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "agency_contacts", "agency_branches"
+  add_foreign_key "agency_destination_cities", "agency_branches"
+  add_foreign_key "agency_destination_cities", "destination_cities"
 end

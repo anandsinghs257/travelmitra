@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contact_number: MyString
+  contact_person: MyString
+  agency_branch: one
+
+two:
+  contact_number: MyString
+  contact_person: MyString
+  agency_branch: two
